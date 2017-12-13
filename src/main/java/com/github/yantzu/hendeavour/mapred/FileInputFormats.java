@@ -28,6 +28,11 @@ public abstract class FileInputFormats {
 		Map<Path, FileSplit> lastSplitOfFile = new HashMap<Path, FileSplit>();
 
 		for (FileSplit inputSplit : inputSplits) {
+			if (inputSplit.getLength() <= 0) {
+				// outputSplits.add(inputSplit);
+				continue;
+			}
+
 			FileSplit lastSplit = lastSplitOfFile.get(inputSplit.getPath());
 			if (lastSplit == null) {
 				lastSplitOfFile.put(inputSplit.getPath(), inputSplit);
