@@ -29,7 +29,8 @@ public abstract class FileInputFormats {
 
 		for (FileSplit inputSplit : inputSplits) {
 			if (inputSplit.getLength() <= 0) {
-				// outputSplits.add(inputSplit);
+				LOG.warn("Ignore 0 length FileSplit:" + inputSplit.getPath() + "=>" + inputSplit.getStart() + ":"
+						+ inputSplit.getLength());
 				continue;
 			}
 
